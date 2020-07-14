@@ -6,5 +6,8 @@ export const validateUser = (methode) =>{
         case "login" : {
             return validationType.loginTypes
         }
+        case "signup" : {
+            return validationType.signupTypes
+        }
     }
 }

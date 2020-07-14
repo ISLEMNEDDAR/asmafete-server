@@ -8,16 +8,12 @@ const UserSchema = new Schema({
     password:{
         type : String,
         required: true
-    }
-    /*nom : {
+    },
+    nom : {
         type : String,
         required : true
     },
     prenom : {
-        type : String,
-        required : true
-    },
-    email : {
         type : String,
         required : true
     },
@@ -36,7 +32,7 @@ const UserSchema = new Schema({
     wilaya : {
         type : String,
         required : true
-    },*/
+    },
 },{
     timestamps : true
 })

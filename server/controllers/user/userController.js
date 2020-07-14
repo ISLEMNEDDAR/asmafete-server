@@ -23,5 +23,11 @@ export const login = async (req,res)=>{
         })
     }
     // return user
+}
 
+export const signup = async (req,res)=>{
+    handleValidationError(req)
+    const user = await userService.signup(req.body)
+    console.log(user)
+    return res.status(user.status).json(user.response)
 }
