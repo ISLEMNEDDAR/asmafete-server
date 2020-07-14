@@ -7,3 +7,15 @@ export const createToken = args =>{
     },devConfig.JWT_SECRET)
 };
 
+export const checkToken = async (req)=>{
+    let token = req.headers['authorization']; // Express headers are auto converted to lowercase
+    if (token.startsWith('Bearer ')) {
+        token = token.slice(7, token.length);
+    }
+    if(token){
+        let tokenResult = await jwt.verify(token,devConfig.JWT_SECRET)
+        console.log(tokenResult)
+    }else{
+        return false
+    }
+}
