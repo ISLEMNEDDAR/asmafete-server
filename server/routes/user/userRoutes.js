@@ -5,4 +5,5 @@ const userRoutes = new Router()
 
 userRoutes.post("/login",userValidation.validateUser("login") ,userController.login)
 userRoutes.post("/signup",userValidation.validateUser("signup"),userController.signup)
+
 export default userRoutes

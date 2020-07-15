@@ -1,18 +1,18 @@
-import User from "../../models/User";
-import devConfig from "../../config/configs";
-import {createToken} from "../../utils/auth";
+import User from "../models/User";
+import devConfig from "../config/configs";
+import {createToken} from "../utils/auth";
 import bcrypt from 'bcrypt'
-import {handleResponse} from "../../utils/handleResponse";
+import {handleResponse} from "../utils/handleResponse";
 
 export default class userService {
-    static async getUser(email){
+    static async getUser(email) {
         return User.findOne({email: email});
     }
 
     static async getInfoUser(email) {
         const user = await this.getUser(email)
         return {
-            _id: user._id,
+            id: user._id,
             email: user.email,
             nom: user.nom,
             prenom: user.prenom,
@@ -53,5 +53,19 @@ export default class userService {
         }else{
             return handleResponse(400,true,{message : "email or password is wrong"})
         }
+    }
+
+    static getUserById(id_user) {
+        return User.findById(id_user);
+    }
+
+    static async updateUserWithFete(id_user, fete_id) {
+        return await User.findByIdAndUpdate({_id : id_user},{
+            $push : {
+                listFete : fete_id
+            }
+        },{
+            new : true
+        })
     }
 }

@@ -33,6 +33,10 @@ const UserSchema = new Schema({
         type : String,
         required : true
     },
+    listFete : [{
+        type : Schema.Types.ObjectId,
+        ref : 'Fete',
+    }]
 },{
     timestamps : true
 })

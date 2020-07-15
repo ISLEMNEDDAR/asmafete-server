@@ -1,5 +1,6 @@
 import * as jwt from "jsonwebtoken";
 import devConfig from "../config/configs";
+import {handleResponse} from "./handleResponse";
 
 export const createToken = args =>{
     return jwt.sign({
@@ -13,9 +14,14 @@ export const checkToken = async (req)=>{
         token = token.slice(7, token.length);
     }
     if(token){
-        let tokenResult = await jwt.verify(token,devConfig.JWT_SECRET)
-        console.log(tokenResult)
+        try {
+            await jwt.verify(token,devConfig.JWT_SECRET)
+            return true
+        }catch (e) {
+            return false
+        }
     }else{
         return false
     }
 }
+
