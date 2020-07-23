@@ -26,6 +26,14 @@ const FeteSchema = new Schema({
         type : String,
         required : true
     }],
+    salle : {
+        type : Schema.Types.ObjectId,
+        ref : 'Salle'
+    },
+    deco : {
+        type : Schema.Types.ObjectId,
+        ref : 'Deco'
+    },
 },{
     timestamps : true
 })

@@ -25,9 +25,9 @@ export default {
         body("nom").exists().isString(),
         body("prenom").exists().isString(),
         body("age").exists().isNumeric(),
-        body("sexe").exists().isIn(["H","F"]),
+        body("sexe").exists().isIn(["h","f"]),
         body("phone").exists().custom((value)=>{
-            return /^\+(?:[0-9] ?){6,14}[0-9]$/.test(value)
+            return /^(00213|\+213|0)(5|6|7)[0-9]{8}$/.test(value)
         }).withMessage("phone format invalid"),
         body("wilaya").exists().isString(),
     ],

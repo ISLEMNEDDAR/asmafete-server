@@ -38,7 +38,7 @@ export default class userService {
                 token : "Bearer "+ createToken(user)
             })
         }else{
-            return handleResponse(400,true,{message: "user exist"})
+            return handleResponse(200,true,{message: "user exist"})
         }
     }
 
