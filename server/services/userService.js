@@ -55,8 +55,8 @@ export default class userService {
         }
     }
 
-    static getUserById(id_user) {
-        return User.findById(id_user);
+    static async getUserById(id_user) {
+        return await User.findById(id_user).then(user=>user);
     }
 
     static async updateUserWithFete(id_user, fete_id) {
