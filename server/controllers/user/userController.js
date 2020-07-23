@@ -11,7 +11,12 @@ export const login = async (req,res)=>{
 }
 
 export const signup = async (req,res)=>{
-    handleValidationError(req)
-    const user = await userService.signup(req.body)
-    response(res,user.status,user.response)
+    const {iserror , error} = handleValidationError(req,res)
+    if(iserror) res.status(422).json({ errors: error.array() });
+    else{
+        console.log("continue")
+        const user = await userService.signup(req.body)
+        response(res,user.status,user.response)
+    }
+
 }
