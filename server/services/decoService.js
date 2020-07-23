@@ -1,5 +1,6 @@
 import Decoration from "../models/Deco";
 import {handleResponse} from "../utils/handleResponse";
+import Salle from "../models/Salle";
 
 export default class decoService {
 
@@ -10,4 +11,12 @@ export default class decoService {
         })
     }
 
+    static async getDecoByIdAndUpdate(decoid, feteid) {
+        return await Decoration.findByIdAndUpdate({_id : decoid},{
+            $set : {
+                fete : feteid,
+                reserved : true
+            }
+        },{new : true}).then(deco => deco)
+    }
 }

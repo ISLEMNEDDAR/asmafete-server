@@ -4,4 +4,5 @@ const salleRoutes = new Router()
 
 salleRoutes.get("/notreserved",salleController.getNotReservedSalle)
 
+
 export default salleRoutes

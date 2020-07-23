@@ -10,7 +10,7 @@ const SalleSchema = new Schema({
         required: true
     },
     name: {
-        type : Number,
+        type : String,
         required : true,
     },
     invite : {

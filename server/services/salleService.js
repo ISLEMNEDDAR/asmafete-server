@@ -9,4 +9,14 @@ export default class salleService {
             salles : salles
         })
     }
+
+    static async getSalleByIdAndUpdate(salleid,feteId) {
+        console.log(salleid)
+        return await Salle.findByIdAndUpdate({_id : salleid},{
+            $set : {
+                fete : feteId,
+                reserve : true
+            }
+        },{new : true}).then(salle => salle)
+    }
 }
