@@ -10,7 +10,7 @@ middlware(app);
 /*
     PORT
  */
-const PORT = process.env.port || 3200;
+const PORT = process.env.port || 3600;
 
 var server = async ()=>{
     await dbConfig()

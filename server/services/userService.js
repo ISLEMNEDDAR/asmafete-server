@@ -38,7 +38,7 @@ export default class userService {
                 token : "Bearer "+ createToken(user)
             })
         }else{
-            return handleResponse(200,true,{message: "user exist"})
+            return handleResponse(422,true,{message: "user exist"})
         }
     }
 
@@ -49,9 +49,9 @@ export default class userService {
             return isSamePassword ? handleResponse(200,false,{
                 user : await this.getInfoUser(user.email),
                 token : "Bearer "+createToken(user)
-            }) : handleResponse(400,true,{message : "email or password is wrong"})
+            }) : handleResponse(422,true,{message : "email or password is wrong"})
         }else{
-            return handleResponse(400,true,{message : "email or password is wrong"})
+            return handleResponse(422,true,{message : "email or password is wrong"})
         }
     }
 
